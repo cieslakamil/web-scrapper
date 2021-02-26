@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+#container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+#menu {
+    width: 60%;
+    margin: auto;
+}
+
+#menu ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style-type: none;
+    margin: auto;
+    justify-content: space-evenly;
+}
+
+#menu li {
+    width: 22%;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    background-color: rgb(255, 172, 47);
+    color: white;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#menu li:hover {
+    cursor: pointer;
+    background-color: rgb(233, 140, 0);
+}
+
+.widget {
+    border: 0.5em solid rgb(255, 172, 47);
+    width: 60%;
+    height: 70vh;
+    margin: auto;
+    margin-top: 4%;
+    padding: 2%;
+}
+
+#project-description {}
