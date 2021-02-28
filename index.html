@@ -6,28 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web scrapper</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div id="container">
         <div id="menu">
             <ul id="menu-options">
-                <li id="opinion-extraction">Ekstrakcja opinii</li>
-                <li id="products-list">Lista produktów</li>
-                <li id="home-page">Strona główna</li>
-                <li id="author-info">O autorze</li>
+                <li id="home-page">
+                    <h2>Strona główna</h2>
+                </li>
+                <li id="opinion-extraction">
+                    <h2>Ekstrakcja opinii</h2>
+                </li>
+                <li id="products-list">
+                    <h2>Lista produktów</h2>
+                </li>
+                <li id="author-info">
+                    <h2>O autorze</h2>
+                </li>
             </ul>
         </div>
         <div id="project-description" class="widget">
-            <h3>Cel aplikacji</h3>
-            <span>Tematem projektu zaliczeniowego jest aplikacja webowa służąca do pobranie z serwisu Ceneo.pl
-                wszystkich opinii o produkcie, którego kod zostanie podany jako parametr oraz wyświetlenie
+            <h1>Cel aplikacji</h1>
+            <span>Aplikacja służy do pobrania z serwisu Ceneo.pl
+                wszystkich opinii o produkcie oraz wyświetlenie
                 pobranych opinii i podstawowych statystyk o nich.</span>
             <br>
             <h3>Opis działania aplikacji</h3>
             <br>
             <h3>Zastosowane biblioteki</h3>
+            Beautiful Soup, requests, urllib.request
             <br>
             <h3>Zastosowane podejścia</h3>
         </div>

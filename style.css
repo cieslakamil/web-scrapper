@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #2e2e2e;
 }
 
 #container {
@@ -13,7 +16,7 @@ body {
 }
 
 #menu {
-    width: 60%;
+    width: 80%;
     margin: auto;
 }
 
@@ -23,7 +26,7 @@ body {
     display: flex;
     list-style-type: none;
     margin: auto;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 #menu li {
@@ -33,10 +36,10 @@ body {
     list-style-type: none;
     background-color: rgb(255, 172, 47);
     color: white;
-    padding: 1em;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 1px;
 }
 
 #menu li:hover {
@@ -45,7 +48,9 @@ body {
 }
 
 .widget {
-    border: 0.5em solid rgb(255, 172, 47);
+    background-color: rgb(255, 172, 47);
+    border: 1px;
+    color: white;
     width: 60%;
     height: 70vh;
     margin: auto;
