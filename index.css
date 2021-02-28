@@ -7,6 +7,7 @@ body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     background-color: #2e2e2e;
+    color: white;
 }
 
 #container {
@@ -34,8 +35,7 @@ body {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    background-color: rgb(255, 172, 47);
-    color: white;
+    background-color: chocolate;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,11 +44,11 @@ body {
 
 #menu li:hover {
     cursor: pointer;
-    background-color: rgb(233, 140, 0);
+    background-color: rgba(216, 90, 0, 0.925);
 }
 
 .widget {
-    background-color: rgb(255, 172, 47);
+    background-color: chocolate;
     border: 1px;
     color: white;
     width: 60%;

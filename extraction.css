@@ -1,0 +1,11 @@
+#extraction {
+    margin: auto;
+    margin-top: 10%;
+    background-color: chocolate;
+    width: 30vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
