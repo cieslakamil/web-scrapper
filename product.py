@@ -8,17 +8,30 @@ from bs4 import BeautifulSoup
 class Product:
     def __init__(self, product_code):
         base_url = 'https://www.ceneo.pl/'
-        self.first_page = BeautifulSoup(requests.get(
-            base_url+product_code+'/opinie-1').text, 'html.parser')
+        self.first_page = self.scrap_page(base_url+product_code+'/opinie-1')
         reviews_button = self.first_page.find(class_='page-tab reviews active')
         self.opinions_per_page = 10
         if reviews_button:
             raw_count = reviews_button.find('span').text
-            self.pages_count = math.ceil(int(raw_count[raw_count.find('(')+1:raw_count.find(')')]) / self.opinions_per_page)
-            print(self.pages_count)
+            self.pages_count = math.ceil(int(raw_count[raw_count.find(
+                '(')+1:raw_count.find(')')]) / self.opinions_per_page)
+        else:
+            self.pages_count = 0
 
-        self.opinions = [self.get_opinion_data(raw_opinion) for raw_opinion in self.first_page.find_all(
-            class_='user-post user-post__card js_product-review')]
+        self.pages = []
+        for i in range(1, self.pages_count+1):
+            print(f'getting {i} page')
+            self.pages.append(self.scrap_page(
+                base_url+product_code+'/opinie-'+str(i)))
+            time.sleep(0.1)
+
+        self.opinions = []
+        for page in self.pages:
+            for raw_opinion in page.find_all(class_='user-post user-post__card js_product-review'):
+                self.opinions.append(self.get_opinion_data(raw_opinion))
+
+    def scrap_page(self, link):
+        return BeautifulSoup(requests.get(link).text, 'html.parser')
 
     def get_opinion_data(self, op):
         opinion = {
