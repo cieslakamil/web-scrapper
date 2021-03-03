@@ -10,6 +10,8 @@ class Product:
         base_url = 'https://www.ceneo.pl/'
         self.first_page = self.scrap_page(base_url+product_code+'/opinie-1')
         reviews_button = self.first_page.find(class_='page-tab reviews active')
+        self.name = self.first_page.find(class_='product-top-2020__product-info__name').text
+
         self.opinions_per_page = 10
         if reviews_button:
             raw_count = reviews_button.find('span').text
@@ -29,7 +31,6 @@ class Product:
         for page in self.pages:
             for raw_opinion in page.find_all(class_='user-post user-post__card js_product-review'):
                 self.opinions.append(self.get_opinion_data(raw_opinion))
-
         self.opinions_count = len(self.opinions)
         self.positives_count = sum(
             len(opinion['positives']) for opinion in self.opinions)
