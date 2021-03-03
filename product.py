@@ -23,12 +23,20 @@ class Product:
             print(f'getting {i} page')
             self.pages.append(self.scrap_page(
                 base_url+product_code+'/opinie-'+str(i)))
-            time.sleep(0.1)
+            # time.sleep(0.001)
 
         self.opinions = []
         for page in self.pages:
             for raw_opinion in page.find_all(class_='user-post user-post__card js_product-review'):
                 self.opinions.append(self.get_opinion_data(raw_opinion))
+
+        self.opinions_count = len(self.opinions)
+        self.positives_count = sum(
+            len(opinion['positives']) for opinion in self.opinions)
+        self.negatives_count = sum(
+            len(opinion['negatives']) for opinion in self.opinions)
+        self.average_score = round(sum(
+            opinion['score'] for opinion in self.opinions)/self.opinions_count, 2)
 
     def scrap_page(self, link):
         return BeautifulSoup(requests.get(link).text, 'html.parser')
@@ -38,12 +46,14 @@ class Product:
             'id': op['data-entry-id'],
             'author': op.find(class_='user-post__author-name').text.strip("\n"),
             'recommended': bool(op.find(class_='recommended')),
-            'score': op.find(class_='user-post__score-count').text,
-            'is_confirmed': True if op .find(class_='review-pz') else False,
+            'score': float(op.find(class_='user-post__score-count').text[:-2].replace(',', '.')),
+            'is_confirmed': bool(op.find(class_='review-pz')),
             'date': [time['datetime'] for time in op.find(class_='user-post__published')('time')],
             'votes_yes': op.find(class_='vote-yes')['data-total-vote'],
             'votes_no': op.find(class_='vote-no')['data-total-vote'],
             'contents': op.find(class_='user-post__text').text,
+            'positives': [],
+            'negatives': []
             # Below are three ways in which positives and negatives can be extracted:
             # option 1
             # 'positives': [item.text for item in op.find(class_='review-feature__title--positives').parent(class_='review-feature__item')] if op.find(class_='review-feature__title--positives') else [],
