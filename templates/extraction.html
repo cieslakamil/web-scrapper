@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/extraction.css') }}"> {% endblock %} {% block body %}
+<div class="container">
+    <div id="extraction" class="widget row justify-content-center">
+        <div class="row">
+            <h1>Wprowadź kod produktu</h1>
+        </div>
+        <div class="input-group">
+            <div class="row mt-1">
+                <form action="" method="get" id="extraction_form" class="row justify-content-center">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-outline-secondary">https://www.ceneo.pl/</button>
+
+                        </div>
+                        <input type="text" id="product_id" name="product_id" class="form-control" aria-label="Text input with segmented dropdown button">
+                    </div>
+                </form>
+                <div class="col mt-3 justify-content-center">
+                    <button type="submit" class="btn btn-primary" form="extraction_form" value="Submit">Sprawdź opinie</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
