@@ -7,17 +7,20 @@
         </div>
         <div class="input-group">
             <div class="row mt-1">
-                <form action="" method="get" id="extraction_form" class="row justify-content-center">
+
+                <form action="/get-opinions" method="POST" id="extraction_form" class="row justify-content-center">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <button type="button" class="btn btn-outline-secondary">https://www.ceneo.pl/</button>
-
                         </div>
-                        <input type="text" id="product_id" name="product_id" class="form-control" aria-label="Text input with segmented dropdown button">
+                        <input type="text" id="product_code" name="product_code" class="form-control" aria-label="Text input with segmented dropdown button">
                     </div>
                 </form>
+
                 <div class="col mt-3 justify-content-center">
-                    <button type="submit" class="btn btn-primary" form="extraction_form" value="Submit">Sprawdź opinie</button>
+                    <button type="submit" class="btn btn-primary" form="extraction_form" value="Submit">Sprawdź opinie</button> {% if feedback %}
+                    <p class="text-danger float-right">{{ feedback }}</p>
+                    {% endif %}
                 </div>
             </div>
 

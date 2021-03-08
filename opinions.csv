@@ -1,28 +1,2 @@
 id,author,recommended,score,is_confirmed,date,votes_yes,votes_no,contents,positives,negatives
-13816722,m...c,True,5.0,True,"['2021-01-21 20:31:49', '2021-01-12 22:35:45']",2,0,"To mój pierwszy MacBook. Decyzję o zmianie komputera osobistego z windowsem na komputer z MacOS podjąłem przy okazji kilkumiesięcznego użytkowania flagowego smartfona z androidem i powrocie do iPhone. 
-Dostęp do plików, multimediów i danych jest rewelacyjny w połączeniu z iCloud.
-Macbook Air M1 jest wykonany z bardzo dobrej jakości materiałów. Jest całkowicie bezgłośny (nie posiada wentylatorów) a przy tym bardzo chłodny. Uważam, że jego cena jest adekwatna do tego co oferuje.
-Polecam.","['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13949214,k...8,True,5.0,True,"['2021-02-12 21:23:23', '2021-01-24 19:20:55']",1,0,"Pierwszy mój MacBook. Błyskawiczne, precyzyjne, poręczne i po prostu świetne narzędzie do pracy, szczególnie w ekosystemie Apple. Jeśli masz iPhone lub iPada i masz dylemat czy wybrać Windowsa czy Maca, nie powinieneś się zastanawiać, choć nawet bez nich sprzęt jest świetny w użytkowaniu.","['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13992377,d...m,True,5.0,True,"['2021-02-20 11:52:26', '2021-02-10 18:02:28']",0,0,"Swietna jakosc, design, uzywanie z innymi produktami Apple jak telefon, zegarek i airpods to czysta przyjemnosc i niesamowita wygoda przesylania danych","['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13921744,j...a,True,5.0,True,"['2021-02-09 09:57:22', '2021-02-01 22:45:59']",2,0,Przełomowe rozwiązanie w komputerach przenośnych. Czekam na komp. stacjonarny z chipem M1 - iMac i Pro.,"['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-14036706,v...a,True,5.0,True,"['2021-03-01 11:22:24', '2021-02-26 10:46:36']",0,0,"Lekki, bardzo atrakcyjnie wizualnie sprzęt. Mam nadzieję, że posłuży mi lata. ","['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13850631,z...p,True,5.0,True,"['2021-01-27 20:35:10', '2021-01-17 17:05:48']",0,0,Klasa sama w sobie.  Jakoś oraz praca na systemie to sama przyjemność. ,"['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13720335,t...i,True,5.0,True,"['2021-01-06 18:04:25', '2020-12-27 13:02:17']",1,0,"Świetny  sprzęt, bez porównania do konkurencji ","['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13792211,d...4,True,5.0,True,"['2021-01-18 18:47:50', '2020-12-19 11:13:19']",0,0,"Mój pierwszy MacBook, jestem bardzo zadowolony z zakupu. ","['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13776293,p...k,True,5.0,True,"['2021-01-15 08:12:01', '2021-01-04 11:40:08']",0,0,"Nowy MacBook z procesorem M1, klasa sama w sobie. ","['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13940870,k...i,True,5.0,True,"['2021-02-11 20:07:49', '2021-02-05 22:12:09']",0,0,Macbook super się spisuje. Polecam.,"['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13659877,m...a,True,5.0,True,"['2020-12-28 11:04:57', '2020-11-30 22:46:07']",0,0,100% pozytyw / perfekcyjna obsługa,[],[]
-13806837,r...z,True,5.0,True,"['2021-01-20 14:59:12', '2021-01-18 19:41:21']",0,0,"Super , polecam każdemu","['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13724632,m...l,True,4.5,True,"['2021-01-07 08:09:06', '2020-12-07 11:26:38']",0,0,"zgodnie z ofertą..
-",[],[]
-13446557,e...1,True,5.0,True,"['2020-11-25 17:23:04', '2020-11-20 13:37:29']",2,2,Jakość super!!!,"['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13893631,k...i,True,5.0,True,"['2021-02-03 21:58:57', '2021-01-25 12:39:56']",0,0,Best Mac ever,"['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13826808,d...k,True,5.0,True,"['2021-01-23 13:37:07', '2021-01-12 14:38:25']",0,0,Super,"['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13818103,j...g,True,5.0,True,"['2021-01-21 22:42:41', '2021-01-19 21:15:27']",0,0,Super,"['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13825890,k...d,True,5.0,True,"['2021-01-23 10:27:20', '2021-01-20 15:46:37']",0,0,ok,"['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13794003,K...i,True,5.0,True,"['2021-01-18 21:57:36', '2021-01-02 23:03:36']",0,0,OK,"['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13430846,j...e,True,5.0,True,"['2020-11-23 19:21:02', '2020-11-18 19:14:04']",2,3,Suprer!!!,"['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13670263,m...1,True,5.0,True,"['2020-12-29 12:13:11', '2020-12-26 20:02:01']",0,4,polecam fajny sprzęt ,[],"['bateria', 'jakość', 'wydajność', 'wygląd']"
-13393559,Aleksander,True,5.0,False,['2020-11-17 17:08:24'],4,2,Świetny sprzęt. ,"['bateria', 'jakość', 'wydajność', 'wygląd']",[]
-13992004,b...8,False,0.5,True,"['2021-02-20 10:17:59', '2021-01-29 10:54:05']",0,0,Nie wiem bo czekam od miesiąca ,[],[]
+2258099,Anna,True,5.0,True,"['2013-10-07 18:03:40', '2013-09-23 17:38:54']",0,0,potrzebne do szkoly byly,['ladne wydania'],[]
