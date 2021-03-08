@@ -1,2 +1,18 @@
-id,author,recommended,score,is_confirmed,date,votes_yes,votes_no,contents,positives,negatives
-2258099,Anna,True,5.0,True,"['2013-10-07 18:03:40', '2013-09-23 17:38:54']",0,0,potrzebne do szkoly byly,['ladne wydania'],[]
+id,author,recommended,score,is_confirmed,issue_date,purchase_date,votes_yes,votes_no,contents,positives,negatives
+8578041,Aleksander,True,5.0,True,2018-11-16 16:32:54,2018-11-13 16:22:24,1,1,"Alufelgi raptem o 50% droższe od stalowych, jednak o niebo ładniejsze, lżejsze-mniejsze spalanie","['jakość', 'trwałość', 'wygląd']",[]
+8517343,rootek,True,4.0,True,2018-11-05 10:04:00,2018-10-24 13:41:06,0,0,"Felgi wygladaja calkiem ladnie, mam nadzieje ze rowniez w eksploatacji sie sprawdza.","['jakość', 'wygląd']",[]
+8609304,silver1979,True,4.0,True,2018-11-23 17:17:06,2018-11-12 09:23:43,0,0,"dopiero co je założyłem to nie mogę nic powiedzieć trwałości produktu, natomiast jakość za te pięniądze ok",[],[]
+10921102,Michał.,True,5.0,True,2019-08-15 11:44:47,2019-08-06 21:11:39,0,0,"Bardzo ładne felgi, mam nadzieję, że trwałe.",['trwałość'],[]
+4417631,Adam,True,5.0,True,2017-02-09 12:03:50,2017-01-24 19:00:25,0,0,"Felgi bardzo ładnie prezentują się na srebrnym aucie, wcale niemałych gabarytów (Galaxy).",[],[]
+5210164,Mariusz,True,5.0,True,2017-11-10 13:21:50,2017-10-21 11:45:49,0,0,"NIE MAM ZDANIA - 
+nowe jest nowe :)","['jakość', 'trwałość', 'wygląd']",[]
+6681931,mac cyl,True,4.0,True,2018-03-07 12:13:13,2018-02-27 18:04:02,0,0,dobra jakość w przystępnej cenie,"['jakość', 'trwałość', 'wygląd']",[]
+2258663,kszysiek,True,4.0,True,2013-10-08 09:30:30,2013-09-24 17:44:52,0,0,pojeździmy - zobaczymy,['dobra cena'],['jeszcze nie zlokalizowano']
+6247492,grzegorz,True,4.5,True,2017-11-23 20:32:39,2017-10-30 21:43:57,0,1,bardzo ładne :),"['trwałość', 'wygląd']",[]
+4283189,AndrzejR76,True,4.5,True,2016-12-13 11:49:18,2016-12-05 15:23:40,0,0,Ładne alufelgi w rozsądnej cenie.,[],[]
+14041374,w...r,True,5.0,True,2021-03-02 08:53:33,2021-02-04 12:44:41,0,0,Fajne felgi w rozsądnej cenie,[],[]
+4348574,Elamilca,True,4.5,True,2017-01-14 11:53:39,2016-12-29 10:23:45,0,0,Wizualnie ok. ,[],[]
+8435130,Radek,True,5.0,True,2018-10-12 10:43:47,2018-10-08 13:27:31,0,0,Polecam,[],[]
+4546752,Sqcza,True,5.0,True,2017-04-05 12:10:07,2016-08-13 17:24:21,0,0,polecam,[],[]
+8296914,Robert,True,5.0,True,2018-08-29 13:54:55,2018-08-25 19:37:11,0,0,Ok,[],[]
+4789405,Zygmunt.,False,0.5,True,2017-06-25 12:53:58,2017-06-07 21:09:44,0,1,"Brak w sprzedaży. Dowiecie się o tym, jak zaczniecie pytać dlaczego pomimo upłynięcia czasu dostawy nie macie informacji o przesyłce.",[],[]

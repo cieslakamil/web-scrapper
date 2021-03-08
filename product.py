@@ -10,7 +10,8 @@ class Product:
         base_url = 'https://www.ceneo.pl/'
         self.first_page = self.scrap_page(base_url+product_code+'/opinie-1')
         reviews_button = self.first_page.find(class_='page-tab reviews active')
-        self.name = self.first_page.find(class_='product-top-2020__product-info__name').text
+        self.name = self.first_page.find(
+            class_='product-top-2020__product-info__name').text
 
         self.opinions_per_page = 10
         if reviews_button:
@@ -22,7 +23,7 @@ class Product:
 
         self.pages = []
         for i in range(1, self.pages_count+1):
-            print(f'getting {i} page')
+            #print(f'getting {i} page')
             self.pages.append(self.scrap_page(
                 base_url+product_code+'/opinie-'+str(i)))
             # time.sleep(0.001)
@@ -37,44 +38,39 @@ class Product:
         self.negatives_count = sum(
             len(opinion['negatives']) for opinion in self.opinions)
         self.average_score = round(sum(
-            opinion['score'] for opinion in self.opinions)/self.opinions_count, 2)
+            opinion['score'] for opinion in self.opinions)/self.opinions_count, 1)
 
     def scrap_page(self, link):
         return BeautifulSoup(requests.get(link).text, 'html.parser')
 
     def get_opinion_data(self, op):
+        if op.find(class_='review-feature__title--positives'):
+            positives = [item.text for item in op.find(
+                class_='review-feature__title--positives').parent(class_='review-feature__item')]
+        else:
+            positives = ''
+        if op.find(class_='review-feature__title--negatives'):
+            negatives = [item.text for item in op.find(
+                class_='review-feature__title--negatives').parent(class_='review-feature__item')]
+        else:
+            negatives = ''
+
+        dates = [time['datetime'][:time['datetime'].find(' ')]
+                 for time in op.find(class_='user-post__published')('time')]
+
         opinion = {
             'id': op['data-entry-id'],
             'author': op.find(class_='user-post__author-name').text.strip("\n"),
-            'recommended': bool(op.find(class_='recommended')),
+            'recommended': op.find(class_='recommended').text if op.find(class_='recommended') else op.find(class_='not-recommended').text,
             'score': float(op.find(class_='user-post__score-count').text[:-2].replace(',', '.')),
-            'is_confirmed': bool(op.find(class_='review-pz')),
-            'date': [time['datetime'] for time in op.find(class_='user-post__published')('time')],
+            'is_confirmed': 'Tak' if (op.find(class_='review-pz')) else 'Nie',
+            'issue_date': dates[0],
+            # check whether the dat of purchase is different than the date of issuing an opinion
+            'purchase_date': dates[1] if len(dates) > 1 else dates[0],
             'votes_yes': op.find(class_='vote-yes')['data-total-vote'],
             'votes_no': op.find(class_='vote-no')['data-total-vote'],
             'contents': op.find(class_='user-post__text').text,
-            'positives': [],
-            'negatives': []
-            # Below are three ways in which positives and negatives can be extracted:
-            # option 1
-            # 'positives': [item.text for item in op.find(class_='review-feature__title--positives').parent(class_='review-feature__item')] if op.find(class_='review-feature__title--positives') else [],
-            # 'negatives': [item.text for item in op.find_all(class_='review-feature__item') if item.parent.find(class_='review-feature__title--negatives')]
+            'positives': positives,
+            'negatives': negatives
         }
-        # option 2
-        for col in op(class_='review-feature__col'):
-            features = [item.text for item in col.find_all(
-                class_='review-feature__item')]
-            if col.find(class_='review-feature__title--positives'):
-                opinion['positives'] = features
-            elif col.find(class_='review-feature__title--negatives'):
-                opinion['negatives'] = features
-        # option 3
-        '''
-        if op.find(class_='review-feature__title--positives'):
-            opinion['positives'] = [item.text for item in op.find(
-                class_='review-feature__title--positives').parent(class_='review-feature__item')]
-        if op.find(class_='review-feature__title--negatives'):
-            opinion['negatives'] = [item.text for item in op.find(
-                class_='review-feature__title--negatives').parent(class_='review-feature__item')]
-        '''
         return opinion

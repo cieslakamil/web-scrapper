@@ -31,15 +31,11 @@ def get_opinions():
 
 @app.route('/product/<product_code>')
 def display_product(product_code):
-    product = Product(product_code)
-    print(product.name)
-    print(f'This is product code: {product_code}')
-
-    dict_list_to_json(product.opinions, 'opinions.json')
-    dict_list_to_csv(product.opinions, 'opinions.csv')
-    dict_list_to_xml(product.opinions, 'opinions.xml')
-    return render_template('/product.html')
-
+    product = Product(product_code) 
+    #dict_list_to_json(product.opinions, 'opinions.json')
+    #dict_list_to_csv(product.opinions, 'opinions.csv')
+    #dict_list_to_xml(product.opinions, 'opinions.xml')
+    return render_template('/product.html', product=product)
 
 if __name__ == "__main__":
     app.run()

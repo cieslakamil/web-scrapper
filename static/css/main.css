@@ -3,9 +3,24 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
+#content {
+    margin: auto;
+    margin-top: 3%;
+    padding: 1.5em;
+    width: 95%;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
     background-color: #ffa947;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    background-color: white;
     color: white;
     margin: 0;
     padding: 0;
@@ -22,7 +37,14 @@ a:hover {
 
 nav {
     width: 100%;
-    background-color: white;
+    background-color: #e78718;
+    color: white;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+nav .title h4 {
+    margin-left: 1em;
+    letter-spacing: 0.1em;
 }
 
 nav ul {
@@ -34,6 +56,15 @@ nav ul {
     justify-content: space-between;
 }
 
+nav a {
+    display: inline-block;
+    width: inherit;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 nav li {
     width: 22%;
     margin: 0;
@@ -42,25 +73,12 @@ nav li {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: black;
     padding: 0.25em;
 }
 
 nav li:hover {
     cursor: pointer;
     background-color: #ffebd4;
-    color: rgb(0, 0, 0);
-}
-
-.widget {
-    background-color: rgb(56, 56, 56);
-    border: 1px;
-    color: white;
-    margin: auto;
-    margin-top: 4%;
-    padding: 2%;
-}
-
-#project-description {
-    width: 60%;
+    color: black;
+    transition: 0.3s;
 }

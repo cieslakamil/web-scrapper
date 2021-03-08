@@ -1,2 +1,54 @@
 {% extends 'base.html' %} {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/extraction.css') }}"> {% endblock %} {% block body %} {% endblock %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/product.css') }}"> {% endblock %} {% block body %}
+<div class="row">
+    <div class="col-md-4">
+        <div id="product_name" class="row">
+            <h1>{{product.name}}</h1>
+        </div>
+    </div>
+    <div class="basic-stats col d-flex flex-row">
+        <div class="col">
+            <h5>Liczba opinii: {{product.opinions_count}}</h5>
+        </div>
+        <div class="col">
+            <h5>Średnia ocena: {{product.average_score}}</h5>
+        </div>
+        <div class="col">
+            <h5>Liczba zalet: {{product.positives_count}}</h5>
+        </div>
+        <div class="col">
+            <h5>Liczba wad: {{product.negatives_count}}</h5>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="row">
+            <table>
+                <tr>
+                    <th>Id opinii</th>
+                    <th>Autor</th>
+                    <th>Rekomendacja</th>
+                    <th>Ocena</th>
+                    <th>Potwierdzone zakupem</th>
+                    <th>Data wystawienia</th>
+                    <th>Data zakupu</th>
+                    <th>Opinia przydatna</th>
+                    <th>Opinia nieprzydatna</th>
+                    <th>Treść opinii</th>
+                    <th>Zalety</th>
+                    <th>Wady</th>
+                </tr>
+                {% for opinion in product.opinions %}
+                <tr>
+                    {% for key in opinion.keys() %}
+                    <td>{{opinion[key]}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
