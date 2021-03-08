@@ -5,15 +5,15 @@
 
 #content {
     margin: auto;
-    margin-top: 3%;
+    margin-top: 2%;
     padding: 1.5em;
     width: 95%;
-    min-height: 40vh;
+    min-height: 85vh;
     display: flex;
     flex-direction: column;
     background-color: #ffa947;
     color: white;
-    border-radius: 20px;
+    border-radius: 15px;
     box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
 }
 
@@ -42,9 +42,9 @@ nav {
     box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
 }
 
-nav .title h4 {
-    margin-left: 1em;
+nav .title {
     letter-spacing: 0.1em;
+    pointer-events: none;
 }
 
 nav ul {
@@ -78,7 +78,7 @@ nav li {
 
 nav li:hover {
     cursor: pointer;
-    background-color: #ffebd4;
+    background-color: #ffffff;
     color: black;
     transition: 0.3s;
 }

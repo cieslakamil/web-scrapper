@@ -4,18 +4,26 @@
     --tile-1-lightest: #bba98b80;
 }
 
-.basic-stats div {
-    position: relative;
+.download-buttons .btn .btn {
+    text-align: center;
+    background-color: white;
+    color: black;
+    padding: 0.25em;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
-.basic-stats h5 {
-    position: absolute;
-    bottom: 0;
+.opinions-stats {
+    padding: 1em;
+}
+
+.table-wrapper {
+    height: 60vh;
 }
 
 table {
     text-align: center;
-    height: 20vh;
+    height: 100%;
     width: 80vw;
     table-layout: fixed;
     color: white;
@@ -25,9 +33,9 @@ table {
 
 tbody {
     overflow-y: scroll;
-    overflow-x: hidden;
+    overflow-x: auto;
     display: block;
-    height: 70vh;
+    height: 100%;
 }
 
 td {

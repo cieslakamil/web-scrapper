@@ -1,29 +1,47 @@
 {% extends 'base.html' %} {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/product.css') }}"> {% endblock %} {% block body %}
 <div class="row">
-    <div class="col-md-4">
-        <div id="product_name" class="row">
-            <h1>{{product.name}}</h1>
+    <div class="col-md-5">
+        <div id="product_name" class="title row">
+            <h2>{{product.name}}</h2>
         </div>
     </div>
-    <div class="basic-stats col d-flex flex-row">
-        <div class="col">
-            <h5>Liczba opinii: {{product.opinions_count}}</h5>
+    <div class="col">
+
+        <div class="download-buttons row">
+            <div class="col-7"></div>
+            <a href="/download-opinions/opinions.csv">
+                <div id="csv-download" class="col btn btn-primary">CSV</div>
+            </a>
+            <a href="/download-opinions/opinions.json">
+                <div id="json-download" class="col btn btn-primary">JSON</div>
+            </a>
+            <a href="/download-opinions/opinions.xlsx">
+                <div id="xlsx-download" class="col btn btn-primary">XLSX</div>
+            </a>
+            <a href="/download-opinions/opinions.xml">
+                <div id="xml-download" class="col btn btn-primary">XML</div>
+            </a>
         </div>
-        <div class="col">
-            <h5>Średnia ocena: {{product.average_score}}</h5>
-        </div>
-        <div class="col">
-            <h5>Liczba zalet: {{product.positives_count}}</h5>
-        </div>
-        <div class="col">
-            <h5>Liczba wad: {{product.negatives_count}}</h5>
+        <div class="opinions-stats basic-stats row d-flex flex-row">
+            <div class="col">
+                <h5>Liczba opinii: {{product.opinions_count}}</h5>
+            </div>
+            <div class="col">
+                <h5>Średnia ocena: {{product.average_score}}</h5>
+            </div>
+            <div class="col">
+                <h5>Liczba zalet: {{product.positives_count}}</h5>
+            </div>
+            <div class="col">
+                <h5>Liczba wad: {{product.negatives_count}}</h5>
+            </div>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col">
-        <div class="row">
+        <div class="table-wrapper row">
             <table>
                 <tr>
                     <th>Id opinii</th>
