@@ -46,11 +46,11 @@ class Product:
 
     def get_opinion_data(self, op):
         if op.find(class_='recommended'):
-            recommended = op.find(class_='recommended').text
+            recommendation = op.find(class_='recommended').text
         elif op.find(class_='not-recommended'):
-            recommended = op.find(class_='not-recommended').text
+            recommendation = op.find(class_='not-recommended').text
         else:
-            recommended = ''
+            recommendation = ''
 
         dates = [time['datetime'][:time['datetime'].find(' ')]
                  for time in op.find(class_='user-post__published')('time')]
@@ -69,7 +69,7 @@ class Product:
         opinion = {
             'id': op['data-entry-id'],
             'author': op.find(class_='user-post__author-name').text.strip("\n"),
-            'recommended': recommended,
+            'recommendation': recommendation,
             'score': float(op.find(class_='user-post__score-count').text[:-2].replace(',', '.')),
             'is_confirmed': 'Tak' if (op.find(class_='review-pz')) else 'Nie',
             'issue_date': dates[0],

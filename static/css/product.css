@@ -2,59 +2,69 @@
     --tile-1: #ffb87e;
     --tile-1-lighter: #c28f54d3;
     --tile-1-lightest: #bba98b80;
+    --table-header: #2a74ffa4;
 }
 
-.download-buttons .btn .btn {
-    text-align: center;
-    background-color: white;
-    color: black;
-    padding: 0.25em;
-    font-size: 1.5em;
-    font-weight: bold;
-}
+.container {}
 
 .opinions-stats {
+    margin: auto;
     padding: 1em;
 }
 
+.opinions-stats h5 {
+    text-align: center;
+}
+
+.title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .table-wrapper {
-    height: 60vh;
+    background-color: white;
+    padding: 1em;
+    border-radius: 15px;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
 }
 
 table {
-    text-align: center;
-    height: 100%;
-    width: 80vw;
-    table-layout: fixed;
-    color: white;
+    margin: auto;
     border-spacing: 2px;
     border-collapse: separate;
+    height: 100%;
+    color: black;
 }
 
 tbody {
     overflow-y: scroll;
-    overflow-x: auto;
-    display: block;
-    height: 100%;
-}
-
-td {
-    padding: 4px;
-    max-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-th,
-td {
-    height: 6vh;
-    min-width: 5.2vw;
-    font-weight: bold;
+    height: 41vh;
 }
 
 th {
-    padding: 2vh;
+    background-color: #888888;
+    color: white;
+}
+
+td,
+th {
+    height: 5vh;
+    padding: 0.3em;
+}
+
+th {
+    overflow: hidden;
+}
+
+td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: "-";
+}
+
+table.dataTable td:nth-child(10) {
+    max-width: 20vw;
 }
 
 tr:nth-child(odd) {
@@ -65,36 +75,18 @@ tr:nth-child(even) {
     background-color: var(--tile-1-lightest);
 }
 
-tr td:nth-child(5) {
-    width: 5%;
-}
-
-tr td:nth-child(6) {
-    width: 4%;
-}
-
-tr td:nth-child(7) {
-    width: 7%;
-}
-
-tr td:nth-child(8) {
-    width: 7%;
-}
-
-tr td:nth-child(9) {
-    width: 7%;
-}
-
 ::-webkit-scrollbar {
     width: 20px;
     background-color: rgb(255, 255, 255);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--tile-1);
+    background: #b4b4b4;
     height: 20px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--tile-1);
+    background: var(--lighter-orange);
+    cursor: pointer;
+    transition: 0.3s;
 }

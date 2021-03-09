@@ -1,10 +1,13 @@
 from flask import Flask, render_template, url_for, request, redirect, send_file
 from product import Product
 from data_conversion import dict_list_to_file
+from livereload import Server
 
 
 app = Flask(__name__)
-
+app.config.update(
+    TEMPLATES_AUTO_RELOAD = True
+)
 
 @app.route('/')
 def index():
@@ -47,5 +50,12 @@ def download_opinions(product_code, file_type):
         return str(e)
 
 
+if __name__ == '__main__':
+    server = Server(app.wsgi_app)
+    server.serve()
+
+# old version, just runs the app
+"""
 if __name__ == "__main__":
     app.run()
+"""

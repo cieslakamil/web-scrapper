@@ -1,72 +1,86 @@
 {% extends 'base.html' %} {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/product.css') }}"> {% endblock %} {% block body %}
-<div class="row">
-    <div class="col-md-5">
-        <div id="product_name" class="title row">
+<div class="container">
+    <div class="row md-1">
+        <div id="product_name" class="title col">
             <h2>{{product.name}}</h2>
         </div>
     </div>
-    <div class="col">
+    <div class="row">
+        <div class="col">
+            <div class="row-md-1  d-flex flex-row-reverse">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pobierz</button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/product/{{product.code}}/download-opinions/csv">CSV</a>
+                    <a class="dropdown-item" href="/product/{{product.code}}/download-opinions/json">JSON</a>
+                    <a class="dropdown-item" href="/product/{{product.code}}/download-opinions/xlsx">XLSX</a>
+                    <a class="dropdown-item" href="/product/{{product.code}}/download-opinions/xml">XML</a>
+                </div>
+            </div>
 
-        <div class="download-buttons row">
-            <div class="col-7"></div>
-            <a href="/product/{{product.code}}/download-opinions/csv">
-                <div id="csv-download" class="col btn btn-primary">CSV</div>
-            </a>
-            <a href="/product/{{product.code}}/download-opinions/json">
-                <div id="json-download" class="col btn btn-primary">JSON</div>
-            </a>
-            <a href="/product/{{product.code}}/download-opinions/xlsx">
-                <div id="xlsx-download" class="col btn btn-primary">XLSX</div>
-            </a>
-            <a href="/product/{{product.code}}/download-opinions/xml">
-                <div id="xml-download" class="col btn btn-primary">XML</div>
-            </a>
-        </div>
-        <div class="opinions-stats basic-stats row d-flex flex-row">
-            <div class="col">
-                <h5>Liczba opinii: {{product.opinions_count}}</h5>
-            </div>
-            <div class="col">
-                <h5>Średnia ocena: {{product.average_score}}</h5>
-            </div>
-            <div class="col">
-                <h5>Liczba zalet: {{product.positives_count}}</h5>
-            </div>
-            <div class="col">
-                <h5>Liczba wad: {{product.negatives_count}}</h5>
+
+            <div class="opinions-stats row d-flex flex-row">
+                <div class="col">
+                    <h5>Liczba opinii: {{product.opinions_count}}</h5>
+                </div>
+                <div class="col">
+                    <h5>Średnia ocena: {{product.average_score}}</h5>
+                </div>
+                <div class="col">
+                    <h5>Liczba zalet: {{product.positives_count}}</h5>
+                </div>
+                <div class="col">
+                    <h5>Liczba wad: {{product.negatives_count}}</h5>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col">
-        <div class="table-wrapper row">
-            <table>
-                <tr>
-                    <th>Id opinii</th>
-                    <th>Autor</th>
-                    <th>Rekomendacja</th>
-                    <th>Ocena</th>
-                    <th>Potwierdzone zakupem</th>
-                    <th>Data wystawienia</th>
-                    <th>Data zakupu</th>
-                    <th>Opinia przydatna</th>
-                    <th>Opinia nieprzydatna</th>
-                    <th>Treść opinii</th>
-                    <th>Zalety</th>
-                    <th>Wady</th>
-                </tr>
-                {% for opinion in product.opinions %}
-                <tr>
-                    {% for key in opinion.keys() %}
-                    <td>{{opinion[key]}}</td>
+    <div class="row">
+        <div class="col table-wrapper">
+            <table id="product-opinions-table">
+                <thead>
+                    <tr>
+                        <th>Id opinii</th>
+                        <th>Autor</th>
+                        <th>Rekomendacja</th>
+                        <th>Ocena</th>
+                        <th>Potwierdzone zakupem</th>
+                        <th>Data wystawienia</th>
+                        <th>Data zakupu</th>
+                        <th>Opinia przydatna</th>
+                        <th>Opinia nieprzydatna</th>
+                        <th>Treść opinii</th>
+                        <th>Zalety</th>
+                        <th>Wady</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for opinion in product.opinions %}
+                    <tr>
+                        <td>{{opinion['id']}}</td>
+                        <td>{{opinion['author']}}</td>
+                        <td>{{opinion['recommendation']}}</td>
+                        <td>{{opinion['score']}}</td>
+                        <td>{{opinion['is_confirmed']}}</td>
+                        <td>{{opinion['issue_date']}}</td>
+                        <td>{{opinion['purchase_date']}}</td>
+                        <td>{{opinion['votes_yes']}}</td>
+                        <td>{{opinion['votes_no']}}</td>
+                        <td>{{opinion['contents']}}</td>
+                        <td>{{opinion['positives']}}</td>
+                        <td>{{opinion['negatives']}}</td>
+                    </tr>
                     {% endfor %}
-                </tr>
-                {% endfor %}
+                </tbody>
             </table>
         </div>
     </div>
-
 </div>
+<script>
+    $(document).ready(function() {
+        $('#product-opinions-table').DataTable({
+            "scrollX": true
+        });
+    });
+</script>
 {% endblock %}
