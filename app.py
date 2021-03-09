@@ -49,13 +49,15 @@ def download_opinions(product_code, file_type):
     except Exception as e:
         return str(e)
 
+@app.route('/product/<product_code>/statistics')
+def display_statistics(product_code):
+    return render_template('/statistics.html')
 
 if __name__ == '__main__':
     server = Server(app.wsgi_app)
     server.serve()
-
-# old version, just runs the app
 """
+# old version, just runs the app
 if __name__ == "__main__":
     app.run()
 """

@@ -2,14 +2,13 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/product.css') }}"> {% endblock %} {% block body %}
 <div class="container">
     <div class="row md-1">
-        <div id="product_name" class="title col">
+        <div id="product_name" class="title col-md-9">
             <h2>{{product.name}}</h2>
         </div>
-    </div>
-    <div class="row">
         <div class="col">
-            <div class="row-md-1  d-flex flex-row-reverse">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pobierz</button>
+            <div class="btn-group d-flex " role="group">
+                <a role="button" class="btn btn-success btn-block" href="/product/{{product.code}}/statistics" type="button" aria-haspopup="true" aria-expanded="false">Statystyki</a>
+                <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pobierz</button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="/product/{{product.code}}/download-opinions/csv">CSV</a>
                     <a class="dropdown-item" href="/product/{{product.code}}/download-opinions/json">JSON</a>
@@ -17,8 +16,11 @@
                     <a class="dropdown-item" href="/product/{{product.code}}/download-opinions/xml">XML</a>
                 </div>
             </div>
+        </div>
 
-
+    </div>
+    <div class="row">
+        <div class="col">
             <div class="opinions-stats row d-flex flex-row">
                 <div class="col">
                     <h5>Liczba opinii: {{product.opinions_count}}</h5>
