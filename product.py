@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 
 class Product:
     def __init__(self, product_code):
+        self.code = product_code
         base_url = 'https://www.ceneo.pl/'
         self.first_page = self.scrap_page(base_url+product_code+'/opinie-1')
         reviews_button = self.first_page.find(class_='page-tab reviews active')
@@ -44,6 +45,16 @@ class Product:
         return BeautifulSoup(requests.get(link).text, 'html.parser')
 
     def get_opinion_data(self, op):
+        if op.find(class_='recommended'):
+            recommended = op.find(class_='recommended').text
+        elif op.find(class_='not-recommended'):
+            recommended = op.find(class_='not-recommended').text
+        else:
+            recommended = ''
+
+        dates = [time['datetime'][:time['datetime'].find(' ')]
+                 for time in op.find(class_='user-post__published')('time')]
+
         if op.find(class_='review-feature__title--positives'):
             positives = [item.text for item in op.find(
                 class_='review-feature__title--positives').parent(class_='review-feature__item')]
@@ -55,13 +66,10 @@ class Product:
         else:
             negatives = ''
 
-        dates = [time['datetime'][:time['datetime'].find(' ')]
-                 for time in op.find(class_='user-post__published')('time')]
-
         opinion = {
             'id': op['data-entry-id'],
             'author': op.find(class_='user-post__author-name').text.strip("\n"),
-            'recommended': op.find(class_='recommended').text if op.find(class_='recommended') else op.find(class_='not-recommended').text,
+            'recommended': recommended,
             'score': float(op.find(class_='user-post__score-count').text[:-2].replace(',', '.')),
             'is_confirmed': 'Tak' if (op.find(class_='review-pz')) else 'Nie',
             'issue_date': dates[0],

@@ -32,18 +32,29 @@ def get_opinions():
 @app.route('/product/<product_code>')
 def display_product(product_code):
     product = Product(product_code)
-    # dict_list_to_json(product.opinions, 'opinions.json')
-    # dict_list_to_csv(product.opinions, 'opinions.csv')
-    # dict_list_to_xml(product.opinions, 'opinions.xml')
     return render_template('/product.html', product=product)
 
 
-@app.route('/download-opinions/<file_name>')
-def download_opinions(file_name):
+@app.route('/product/<product_code>/download-opinions/<file_type>')
+def download_opinions(product_code, file_type):
+    product = Product(product_code)
+    file_name = f'{product_code}.{file_type}'
+    file_path = f'./opinions/{product_code}'
+    if file_type == 'csv':
+        dict_list_to_csv(product.opinions, file_path, file_name)
+    if file_type == 'json':
+        dict_list_to_json(product.opinions, file_path, file_name)
+    if file_type == 'xlsx':
+        pass
+        #dict_list_to_xlsx(product.opinions, file_path, file_name)
+    if file_type == 'xml':
+        dict_list_to_xml(product.opinions, file_path, file_name)
+
     try:
-        return send_file(file_name, attachment_filename=file_name)
+        return send_file(file_path+'/'+file_name, as_attachment=True, attachment_filename=file_name)
     except Exception as e:
         return str(e)
+
 
 if __name__ == "__main__":
     app.run()
