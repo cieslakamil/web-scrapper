@@ -1,0 +1,68 @@
+[{
+        "id": "12570518",
+        "author": "k...a",
+        "recommended": "Polecam",
+        "score": 5.0,
+        "is_confirmed": "Tak",
+        "issue_date": "2020-06-02",
+        "purchase_date": "2020-05-22",
+        "votes_yes": "0",
+        "votes_no": "0",
+        "contents": "Super fajny spełnia moje oczekiwania.",
+        "positives": [
+            "czas pracy na baterii",
+            "funkcjonalność",
+            "pomiarów",
+            "jak puls",
+            "ciśnienie",
+            "saturacja",
+            "wyświetlacz"
+        ],
+        "negatives": ""
+    },
+    {
+        "id": "11863380",
+        "author": "Użytkownik Ceneo",
+        "recommended": "Polecam",
+        "score": 5.0,
+        "is_confirmed": "Tak",
+        "issue_date": "2020-03-06",
+        "purchase_date": "2020-02-18",
+        "votes_yes": "0",
+        "votes_no": "0",
+        "contents": "Super ",
+        "positives": "",
+        "negatives": ""
+    },
+    {
+        "id": "11660113",
+        "author": "Tiger65",
+        "recommended": "Polecam",
+        "score": 5.0,
+        "is_confirmed": "Nie",
+        "issue_date": "2020-01-29",
+        "purchase_date": "2020-01-29",
+        "votes_yes": "0",
+        "votes_no": "0",
+        "contents": "Uwielbiam ten kolor, sama opaska działa bez żadnego zarzutu. Noszę ją cały czas.",
+        "positives": [
+            "czas pracy na baterii",
+            "funkcjonalność"
+        ],
+        "negatives": ""
+    },
+    {
+        "id": "12299729",
+        "author": "Nina",
+        "recommended": "Polecam",
+        "score": 5.0,
+        "is_confirmed": "Nie",
+        "issue_date": "2020-04-30",
+        "purchase_date": "2020-04-30",
+        "votes_yes": "0",
+        "votes_no": "0",
+        "contents": "Ma świetny kolor, działa bardzo dobrze. Szybko łączy się ze smartfonem.",
+        "positives": "",
+        "negatives": ""
+    }
+]

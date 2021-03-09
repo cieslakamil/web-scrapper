@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <item>
+        <id>12570518</id>
+        <author>k...a</author>
+        <recommended>Polecam</recommended>
+        <score>5.0</score>
+        <is_confirmed>Tak</is_confirmed>
+        <issue_date>2020-06-02</issue_date>
+        <purchase_date>2020-05-22</purchase_date>
+        <votes_yes>0</votes_yes>
+        <votes_no>0</votes_no>
+        <contents>Super fajny spełnia moje oczekiwania.</contents>
+        <positives>
+            <item>czas pracy na baterii</item>
+            <item>funkcjonalność</item>
+            <item>pomiarów</item>
+            <item>jak puls</item>
+            <item>ciśnienie</item>
+            <item>saturacja</item>
+            <item>wyświetlacz</item>
+        </positives>
+        <negatives></negatives>
+    </item>
+    <item>
+        <id>11863380</id>
+        <author>Użytkownik Ceneo</author>
+        <recommended>Polecam</recommended>
+        <score>5.0</score>
+        <is_confirmed>Tak</is_confirmed>
+        <issue_date>2020-03-06</issue_date>
+        <purchase_date>2020-02-18</purchase_date>
+        <votes_yes>0</votes_yes>
+        <votes_no>0</votes_no>
+        <contents>Super </contents>
+        <positives></positives>
+        <negatives></negatives>
+    </item>
+    <item>
+        <id>11660113</id>
+        <author>Tiger65</author>
+        <recommended>Polecam</recommended>
+        <score>5.0</score>
+        <is_confirmed>Nie</is_confirmed>
+        <issue_date>2020-01-29</issue_date>
+        <purchase_date>2020-01-29</purchase_date>
+        <votes_yes>0</votes_yes>
+        <votes_no>0</votes_no>
+        <contents>Uwielbiam ten kolor, sama opaska działa bez żadnego zarzutu. Noszę ją cały czas.</contents>
+        <positives>
+            <item>czas pracy na baterii</item>
+            <item>funkcjonalność</item>
+        </positives>
+        <negatives></negatives>
+    </item>
+    <item>
+        <id>12299729</id>
+        <author>Nina</author>
+        <recommended>Polecam</recommended>
+        <score>5.0</score>
+        <is_confirmed>Nie</is_confirmed>
+        <issue_date>2020-04-30</issue_date>
+        <purchase_date>2020-04-30</purchase_date>
+        <votes_yes>0</votes_yes>
+        <votes_no>0</votes_no>
+        <contents>Ma świetny kolor, działa bardzo dobrze. Szybko łączy się ze smartfonem.</contents>
+        <positives></positives>
+        <negatives></negatives>
+    </item>
+</root>
