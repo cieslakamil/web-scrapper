@@ -1,13 +1,24 @@
 from flask import Flask, render_template, url_for, request, redirect, send_file, jsonify
+from livereload import Server
+import pymongo
+from pymongo import MongoClient
 from product import Product
 from data_conversion import dict_list_to_file
-from livereload import Server
+
+
 
 
 app = Flask(__name__)
 app.config.update(
-    TEMPLATES_AUTO_RELOAD=True
+    TEMPLATES_AUTO_RELOAD=True,
+    debug=True
 )
+
+client = MongoClient('mongodb://localhost:27017/')
+
+db = client.ceneo_products_db
+
+_products = db.products
 
 products = {}
 
@@ -39,6 +50,12 @@ def get_opinions():
 def display_product(product_code):
     if product_code not in products.keys():
         products[product_code] = Product(product_code)
+        product = products[product_code]
+        if not _products.find_one({"code": product_code}):
+            _products.insert_one(product.get_properties())
+        print(_products.find_one({"code":"50534"})['name'])
+
+
     return render_template('/product.html', product=products[product_code])
 
 
@@ -68,12 +85,16 @@ def get_score_stats(product_code):
     prd = products[product_code]
     return jsonify([prd.score_stats, prd.recommendations])
 
+"""
 
 if __name__ == '__main__':
     server = Server(app.wsgi_app)
     server.serve()
 """
+
+
 # old version, just runs the app
 if __name__ == "__main__":
     app.run()
-"""
+
+

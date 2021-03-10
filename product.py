@@ -9,28 +9,25 @@ class Product:
     def __init__(self, product_code):
         self.code = product_code
         base_url = 'https://www.ceneo.pl/'
-        self.first_page = self.scrap_page(base_url+product_code+'/opinie-1')
-        reviews_button = self.first_page.find(class_='page-tab reviews active')
-        self.name = self.first_page.find(
+        first_page = self.scrap_page(base_url+product_code+'/opinie-1')
+        reviews_button = first_page.find(class_='page-tab reviews active')
+        self.name = first_page.find(
             class_='product-top-2020__product-info__name').text
-
-        self.opinions_per_page = 10
+        opinions_per_page = 10
         if reviews_button:
             raw_count = reviews_button.find('span').text
-            self.pages_count = math.ceil(int(raw_count[raw_count.find(
-                '(')+1:raw_count.find(')')]) / self.opinions_per_page)
+            pages_count = math.ceil(int(raw_count[raw_count.find(
+                '(')+1:raw_count.find(')')]) / opinions_per_page)
         else:
-            self.pages_count = 0
+            pages_count = 0
 
-        self.pages = []
-        for i in range(1, self.pages_count+1):
-            #print(f'getting {i} page')
-            self.pages.append(self.scrap_page(
+        pages = []
+        for i in range(1, pages_count+1):
+            pages.append(self.scrap_page(
                 base_url+product_code+'/opinie-'+str(i)))
-            # time.sleep(0.001)
 
         self.opinions = []
-        for page in self.pages:
+        for page in pages:
             for raw_opinion in page.find_all(class_='user-post user-post__card js_product-review'):
                 self.opinions.append(self.get_opinion_data(raw_opinion))
         self.opinions_count = len(self.opinions)
@@ -41,16 +38,7 @@ class Product:
         self.average_score = round(sum(
             opinion['score'] for opinion in self.opinions)/self.opinions_count, 1)
 
-        # none/negative/positive
-        self.recommendations = [0, 0, 0]
-        for opinion in self.opinions:
-            if opinion['recommendation'] == 'Polecam':
-                self.recommendations[2] += 1
-            elif opinion['recommendation'] == 'Nie Polecam':
-                self.recommendations[1] += 1
-            else:
-                self.recommendations[0] += 1
-            
+
         self.score_stats = [0, 0, 0, 0, 0]
         for opinion in self.opinions:
             if opinion['score'] <= 1:
@@ -63,6 +51,30 @@ class Product:
                 self.score_stats[3] += 1
             else:
                 self.score_stats[4] += 1
+
+        # none/negative/positive
+        self.recommendations = [0, 0, 0]
+        for opinion in self.opinions:
+            if opinion['recommendation'] == 'Polecam':
+                self.recommendations[2] += 1
+            elif opinion['recommendation'] == 'Nie Polecam':
+                self.recommendations[1] += 1
+            else:
+                self.recommendations[0] += 1
+
+
+    def get_properties(self):
+        return {
+            "code": self.code,
+            "name": self.name,
+            "opinions": self.opinions,
+            "opinions_count": self.opinions_count,
+            "positives_count": self.positives_count,
+            "negatives_count": self.negatives_count,
+            "average_score": self.average_score,
+            "score_stats": self.score_stats,
+            "recommendations": self.recommendations
+        }
 
     def scrap_page(self, link):
         return BeautifulSoup(requests.get(link).text, 'html.parser')
