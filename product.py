@@ -41,6 +41,29 @@ class Product:
         self.average_score = round(sum(
             opinion['score'] for opinion in self.opinions)/self.opinions_count, 1)
 
+        # none/negative/positive
+        self.recommendations = [0, 0, 0]
+        for opinion in self.opinions:
+            if opinion['recommendation'] == 'Polecam':
+                self.recommendations[2] += 1
+            elif opinion['recommendation'] == 'Nie Polecam':
+                self.recommendations[1] += 1
+            else:
+                self.recommendations[0] += 1
+            
+        self.score_stats = [0, 0, 0, 0, 0]
+        for opinion in self.opinions:
+            if opinion['score'] <= 1:
+                self.score_stats[0] += 1
+            elif opinion['score'] <= 2:
+                self.score_stats[1] += 1
+            elif opinion['score'] <= 3:
+                self.score_stats[2] += 1
+            elif opinion['score'] <= 4:
+                self.score_stats[3] += 1
+            else:
+                self.score_stats[4] += 1
+
     def scrap_page(self, link):
         return BeautifulSoup(requests.get(link).text, 'html.parser')
 
