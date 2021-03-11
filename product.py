@@ -6,30 +6,13 @@ from bs4 import BeautifulSoup
 
 
 class Product:
-    def __init__(self, product_code):
-        self.code = product_code
-        base_url = 'https://www.ceneo.pl/'
-        first_page = self.scrap_page(base_url+product_code+'/opinie-1')
-        reviews_button = first_page.find(class_='page-tab reviews active')
-        self.name = first_page.find(
+    def __init__(self, code):
+        self.code = code
+        self.base_url = 'https://www.ceneo.pl/'
+        pages = self.scrap_pages()
+        self.name = pages[0].find(
             class_='product-top-2020__product-info__name').text
-        opinions_per_page = 10
-        if reviews_button:
-            raw_count = reviews_button.find('span').text
-            pages_count = math.ceil(int(raw_count[raw_count.find(
-                '(')+1:raw_count.find(')')]) / opinions_per_page)
-        else:
-            pages_count = 0
-
-        pages = []
-        for i in range(1, pages_count+1):
-            pages.append(self.scrap_page(
-                base_url+product_code+'/opinie-'+str(i)))
-
-        self.opinions = []
-        for page in pages:
-            for raw_opinion in page.find_all(class_='user-post user-post__card js_product-review'):
-                self.opinions.append(self.get_opinion_data(raw_opinion))
+        self.opinions = self.get_all_opinions(pages)
         self.opinions_count = len(self.opinions)
         self.positives_count = sum(
             len(opinion['positives']) for opinion in self.opinions)
@@ -37,7 +20,6 @@ class Product:
             len(opinion['negatives']) for opinion in self.opinions)
         self.average_score = round(sum(
             opinion['score'] for opinion in self.opinions)/self.opinions_count, 1)
-
 
         self.score_stats = [0, 0, 0, 0, 0]
         for opinion in self.opinions:
@@ -62,7 +44,6 @@ class Product:
             else:
                 self.recommendations[0] += 1
 
-
     def get_properties(self):
         return {
             "code": self.code,
@@ -76,10 +57,34 @@ class Product:
             "recommendations": self.recommendations
         }
 
+    def scrap_pages(self):
+        opinions_per_page = 10
+        pages = []
+        pages.append(self.scrap_page(self.base_url+self.code+'/opinie-1'))
+        reviews_button = pages[0].find(class_='page-tab reviews active')
+        if reviews_button:
+            pages_count_str = reviews_button.find('span').text
+            pages_count = math.ceil(int(pages_count_str[pages_count_str.find(
+                '(')+1:pages_count_str.find(')')]) / opinions_per_page)
+        else:
+            pages_count = 1
+        for i in range(2, pages_count+1):
+            pages.append(self.scrap_page(
+                self.base_url+self.code+'/opinie-'+str(i)))
+        return pages
+
     def scrap_page(self, link):
         return BeautifulSoup(requests.get(link).text, 'html.parser')
 
-    def get_opinion_data(self, op):
+    def get_all_opinions(self, pages):
+        opinions = []
+        #opinions = [self.get_opinion_data(d) for d in page.find_all(class_='user-post user-post__card js_product-review') for page in pages]
+        for page in pages:
+            for raw_opinion in page.find_all(class_='user-post user-post__card js_product-review'):
+                opinions.append(self.get_opinion(raw_opinion))
+        return opinions
+
+    def get_opinion(self, op):
         if op.find(class_='recommended'):
             recommendation = op.find(class_='recommended').text
         elif op.find(class_='not-recommended'):

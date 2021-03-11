@@ -59,26 +59,18 @@ table.dataTable td:nth-child(10) {
     max-width: 20vw;
 }
 
+table.dataTable td:nth-child(11) {
+    max-width: 20vw;
+}
+
+table.dataTable td:nth-child(12) {
+    max-width: 20vw;
+}
+
 tr:nth-child(odd) {
     background-color: var(--tile-1-lighter);
 }
 
 tr:nth-child(even) {
     background-color: var(--tile-1-lightest);
-}
-
-::-webkit-scrollbar {
-    width: 20px;
-    background-color: rgb(255, 255, 255);
-}
-
-::-webkit-scrollbar-thumb {
-    background: #b4b4b4;
-    height: 20px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--lighter-orange);
-    cursor: pointer;
-    transition: 0.3s;
 }

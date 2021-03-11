@@ -6,7 +6,7 @@ $.ajax({
     const stats = response;
     let scoreChartCtx = document.getElementById('score-chart').getContext('2d');
     let recommendationChartCtx = document.getElementById('recommendation-chart').getContext('2d');
-
+    console.log(stats[0])
     let scoreChart = new Chart(scoreChartCtx, {
         type: 'bar',
         data: {
