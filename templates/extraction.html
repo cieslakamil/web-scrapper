@@ -1,30 +1,41 @@
 {% extends 'base.html' %} {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/extraction.css') }}"> {% endblock %} {% block body %}
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
         <div class="row">
-            <h1>Wprowadź kod produktu</h1>
+            <div class="col title">
+                <h1>Wprowadź kod produktu</h1>
+            </div>
         </div>
         <div class="input-group">
             <div class="row mt-1">
-
                 <form action="/get-opinions" method="POST" id="extraction_form" class="row justify-content-center">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <button type="button" class="btn btn-outline-secondary">https://www.ceneo.pl/</button>
+                            <a href="https://www.ceneo.pl/">
+                                <div class="input-group-text">https://www.ceneo.pl/</div>
+                            </a>
                         </div>
-                        <input type="text" id="product_code" name="product_code" class="form-control" aria-label="Text input with segmented dropdown button">
+                        <input type="text" id="product_code" name="product_code" class="form-control">
 
                     </div>
                 </form>
 
-                <div class="col mt-3 justify-content-center">
-                    <button type="submit" class="btn btn-primary" form="extraction_form" value="Submit">Sprawdź opinie</button> {% if feedback %}
-                    <p class="text-danger float-right">{{ feedback }}</p>
-                    {% endif %}
-                </div>
             </div>
 
+
+        </div>
+        <div class="col mt-3 sth">
+            <div class="col-4">
+                <button type="submit" class="btn btn-primary" form="extraction_form" value="Submit">Sprawdź opinie</button>
+            </div>
+            {% if feedback %}
+            <div class="col">
+                <div class="warning">
+                    <b>{{ feedback }}</b>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>

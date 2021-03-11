@@ -20,9 +20,10 @@ app.config.update(
     TEMPLATES_AUTO_RELOAD=True,
     debug=True
 )
-
 # MONGODB DATABASE
-client = MongoClient('mongodb://localhost:27017/')
+
+client = pymongo.MongoClient("mongodb+srv://h6G9Ulz7bix5DdSC:h6G9Ulz7bix5DdSC@ceneop.zyvr9.mongodb.net/ceneop?retryWrites=true&w=majority")
+#client = MongoClient('mongodb://localhost:27017/')
 db = client.ceneo_products_db
 products = db.products
 print(f'DATABASE: {products}')
@@ -41,10 +42,10 @@ def extract():
 def get_opinions():
     if request.method == "POST":
         product_code = request.form['product_code']
-        if product_code:
+        if product_code and product_code.isdecimal():
             return redirect('/product/'+product_code)
         else:
-            feedback = 'You haven\'t entered correct product code'
+            feedback = 'Nieprawidłowy kod produktu.'
             return render_template('/extraction.html', feedback=feedback)
     return render_template('/extraction.html')
 
