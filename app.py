@@ -25,7 +25,7 @@ app.config.update(
 client = MongoClient('mongodb://localhost:27017/')
 db = client.ceneo_products_db
 products = db.products
-
+print(f'DATABASE: {products}')
 
 @app.route('/')
 def index():
@@ -55,7 +55,6 @@ def display_product(product_code):
     if not product:
         product = Product(product_code)
         products.insert_one(product.get_properties())
-        print(product.name)
     return render_template('/product.html', product=product)
 
 
@@ -82,6 +81,10 @@ def display_statistics_page(product_code):
 def get_score_stats(product_code):
     product = products.find_one({"code": product_code})
     return jsonify([product['score_stats'], product['recommendations']])
+
+@app.route('/product-list')
+def display_products_list():
+    return render_template('/product_list.html', products=products.find())
 
 
 """

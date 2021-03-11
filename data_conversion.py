@@ -4,8 +4,6 @@ from dicttoxml import dicttoxml
 import pandas
 import xlsxwriter
 # for creating a path if it does not exist
-import os
-
 
 def dict_list_to_file(dict_list, file, file_extension):
     """ Write to chosen file format data from a list of dictionaries."""

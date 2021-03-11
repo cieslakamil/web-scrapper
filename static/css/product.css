@@ -57,14 +57,29 @@ td {
 
 table.dataTable td:nth-child(10) {
     max-width: 20vw;
+    overflow-x: scroll;
 }
 
 table.dataTable td:nth-child(11) {
     max-width: 20vw;
+    overflow-x: scroll;
 }
 
 table.dataTable td:nth-child(12) {
     max-width: 20vw;
+    overflow-x: scroll;
+}
+
+table.dataTable td:nth-child(10)::-webkit-scrollbar {
+    display: none;
+}
+
+table.dataTable td:nth-child(11)::-webkit-scrollbar {
+    display: none;
+}
+
+table.dataTable td:nth-child(12)::-webkit-scrollbar {
+    display: none;
 }
 
 tr:nth-child(odd) {

@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/product_list.css') }}"> {% endblock %} {% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col title">
+            Lista Produktów
+        </div>
+    </div>
+
+    {% for product in products %}
+    <div class="row product-row">
+        <div class="col product-col d-flex flex-column">
+            <div class="row first-row ">
+                <div class="col-10 product-name">
+                    <a href="/product/{{product.code}}">
+                        {{product.name}}
+                    </a>
+                </div>
+                <div class="col download-button">
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/product/{{product.code}}/download-opinions/csv">CSV</a>
+                        <a class="dropdown-item" href="/product/{{product.code}}/download-opinions/json">JSON</a>
+                        <a class="dropdown-item" href="/product/{{product.code}}/download-opinions/xlsx">XLSX</a>
+                        <a class="dropdown-item" href="/product/{{product.code}}/download-opinions/xml">XML</a>
+                    </div>
+                    <button class="btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pobierz</button>
+
+                </div>
+            </div>
+            <div class="row second-row">
+                <div class="col statistics">
+                    <div>
+                        Liczba opinii: {{product.opinions_count}}
+                    </div>
+                    <div>
+                        Średnia ocena: {{product.average_score}}
+                    </div>
+                    <div>
+                        Liczba zalet: {{product.positives_count}}
+                    </div>
+                    <div>
+                        Liczba wad: {{product.negatives_count}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+{% endblock %}
