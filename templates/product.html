@@ -69,8 +69,8 @@
                         <td>{{opinion['votes_yes']}}</td>
                         <td>{{opinion['votes_no']}}</td>
                         <td>{{opinion['contents']}}</td>
-                        <td>{{opinion['positives']}}</td>
-                        <td>{{opinion['negatives']}}</td>
+                        <td>{{', '.join(opinion['positives'])}}</td>
+                        <td>{{', '.join(opinion['negatives'])}}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

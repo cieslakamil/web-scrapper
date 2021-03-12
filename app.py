@@ -19,6 +19,8 @@ client = pymongo.MongoClient("mongodb+srv://h6G9Ulz7bix5DdSC:h6G9Ulz7bix5DdSC@ce
 #client = MongoClient('mongodb://localhost:27017/')
 db = client.ceneo_products_db
 products = db.products
+
+
 print(f'DATABASE: {products}')
 
 @app.route('/')

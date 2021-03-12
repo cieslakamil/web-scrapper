@@ -39,7 +39,7 @@ class Product:
         for opinion in self.opinions:
             if opinion['recommendation'] == 'Polecam':
                 self.recommendations[2] += 1
-            elif opinion['recommendation'] == 'Nie Polecam':
+            elif opinion['recommendation'] == 'Nie polecam':
                 self.recommendations[1] += 1
             else:
                 self.recommendations[0] += 1
