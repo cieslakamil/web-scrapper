@@ -7,13 +7,6 @@ from product import Product
 from data_conversion import dict_list_to_file
 import tempfile
 
-import json
-import csv
-from dicttoxml import dicttoxml
-import pandas
-import xlsxwriter
-# for creating a path if it does not exist
-import os
 
 app = Flask(__name__)
 app.config.update(

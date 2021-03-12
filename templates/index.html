@@ -1,29 +1,125 @@
-{% extends 'base.html' %} {% block body %}
+{% extends 'base.html' %} {% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"> {% endblock %}{% block body %}
 
 <div class="container">
-    <div id="project-description" class="row">
-        <div class="row">
-            <h1>Cel aplikacji</h1>
+    <div class="row">
+        <div class="col widget app-purpose">
+            <h2 widget-title>
+                Cel aplikacji
+            </h2>
+            <span>
+                <h5>
+                    Aplikacja służy do zebrania  z serwisu Ceneo.pl
+                    wszystkich opinii o produkcie, wyświetlenie podstawowych
+                    statystyk, oraz umożliwienie pobraniach ich w wybranym formacie.
+                    Umożliwia to dokonanie lepszego wyboru produktu.
+                </h5>
+            </span>
+        </div>
+        <div class="col widget app-description">
+            <h2 class="widget-title">
+                Opis działania
+            </h2>
+            <div class="col">
+                <h5>
+                    Aplikacja za pomocą języka python analizuje kod strony z produktem, w zautomatyzowany sposób kolekcjonując wszystkie opinie. Wyszukane dane na temat produktu są zapisywane do bazy danych. Niezbędne informacje są przesyłane do komponentów z których korzysta
+                    użytkownik, następuje wtedy ich interpretacja w celu wizualnej reprezentacji danych.
+
+                </h5>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col widget used-libraries">
+            <h2 widget-title>
+                Użyte biblioteki
+            </h2>
+            <div class="row">
+                <div class="col-3">
+                    <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/" target="_blank">
+                        beautiful soup
+                    </a>
+                </div>
+                <div class="col-1">-</div>
+                <div class="col">scrapping data</div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <a href="https://flask.palletsprojects.com/" target="_blank">
+                        flask
+                    </a>
+                </div>
+                <div class="col-1">-</div>
+                <div class="col">web interface</div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <a href="https://jinja.palletsprojects.com/en/2.11.x/" target="_blank">
+                        jinja
+                    </a>
+                </div>
+                <div class="col-1">-</div>
+                <div class="col">templating pages</div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <a href="https://pymongo.readthedocs.io/en/stable/" target="_blank">
+                        pymongo
+                    </a>
+                </div>
+                <div class="col-1">-</div>
+                <div class="col">collecting opinions</div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <a href="https://pandas.pydata.org/" target="_blank">
+                        pandas
+                    </a>
+                </div>
+                <div class="col-1">-</div>
+                <div class="col">data conversion</div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <a href="https://www.chartjs.org/" target="_blank">
+                        chart.js
+                    </a>
+                </div>
+                <div class="col-1">-</div>
+                <div class="col">opinions' statistics</div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <a href="https://getbootstrap.com/" target="_blank">
+                        bootstrap
+                    </a>
+                </div>
+                <div class="col-1">-</div>
+                <div class="col"> visual interface</div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <a href="https://datatables.net/" target="_blank">
+                        datatables
+                    </a>
+                </div>
+                <div class="col-1">-</div>
+                <div class="col">data filtration and sorting</div>
+            </div>
 
         </div>
-        <div class="row">
-            <span>Aplikacja służy do pobrania z serwisu Ceneo.pl
-                    wszystkich opinii o produkcie oraz wyświetlenie
-                    pobranych opinii i podstawowych statystyk o nich.</span>
-        </div>
-        <div class="row">
-            <h3>Opis działania aplikacji</h3>
-        </div>
-        <div class="row">
-            <h3>Zastosowane biblioteki</h3>
-        </div>
-        <div class="row">
-            Beautiful Soup, requests, urllib.request
-        </div>
-        <div class="row">
-            <h3>Zastosowane podejścia</h3>
-        </div>
-        <div class="row">
+        <div class="col widget approaches float-right">
+            <div>
+                <h2 class="widget-title">
+                    Zastosowane podejścia
+                </h2>
+            </div>
+            <div class=" col approaches-text">
+                <h5>
+                    Do stworzenia logiki procesu scrappowania danych zastosowano podejście obiektowe. Uruchomienie aplikacji i zarządzanie interfejsem przebiega głównie w sposób proceduralny. Program podzielony jest na moduły, wydzielające procesy analizy danych po stronie
+                    serwera oraz klienta. Budowa strony zgodna jest z Document Object Model.
+                </h5>
+            </div>
         </div>
     </div>
 </div>

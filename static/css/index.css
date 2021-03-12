@@ -1,0 +1,70 @@
+.container {
+    min-height: 140vh;
+}
+
+.widget {
+    width: 100px;
+    background-color: white;
+    height: 300px;
+    padding: 1.5em;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    border-radius: 15px;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.widget-title {
+    text-align: center;
+}
+
+.widget span {
+    font-size: 1.1em;
+    width: 85%;
+    text-align: justify;
+}
+
+.app-purpose {
+    z-index: 1;
+}
+
+.app-description {
+    position: relative;
+    top: 5em;
+    right: 5em;
+    z-index: 2;
+}
+
+.app-description .widget-title {
+    text-align: right;
+}
+
+.approaches {
+    position: relative;
+}
+
+.approaches .widget-title {
+    text-align: right;
+}
+
+.approaches-text {
+    text-align: justify;
+    margin-left: 3em;
+}
+
+.used-libraries {
+    position: relative;
+    left: 4em;
+    top: 4em;
+    z-index: 2;
+}
+
+.container .row:nth-child(1) {
+    margin-top: 3em;
+    margin-bottom: 6em;
+}
+
+.used-libraries .col-3 {
+    color: blue;
+}
