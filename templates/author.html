@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/author.css') }}"> {% endblock %} {% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="col">
+                <h3 class="author-name">
+                    Kamil Cieśla
+                </h3>
+            </div>
+            <div class="row">
+                <div class="col college">
+                    Student na Uniwersytecie Ekonomicznym W Krakowie
+                    <br> Kierunek: Informatyka Stosowana
+                    <br> Numer albumu: 218495
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col contact">
+                    e-mail: kamilciesla34@gmail.com
+
+                    <br>
+                    <a href="https://github.com/cieslakamil ">
+                        https://github.com/cieslakamil
+                    </a>
+                    <br>
+                    <a href="www.linkedin.com/in/kamil-ciesla">
+                        www.linkedin.com/in/kamil-ciesla
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col author-img-col">
+            <img class=" author-img w-5 img-fluid min-width:100% height:auto" src="{{ url_for('static', filename='images/author_img.jpg') }}" alt="author image">
+        </div>
+
+    </div>
+</div>
+{% endblock %}

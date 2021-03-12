@@ -1,0 +1,22 @@
+.container {
+    margin-top: 15vh;
+    width: 40vw;
+    background-color: rgb(91, 100, 114);
+    font-size: 1.1em;
+}
+
+.contact {
+    margin-top: 1em;
+}
+
+.author-img-col {}
+
+.author-img {
+    width: 15vw;
+    border-radius: 50%;
+}
+
+a:hover {
+    color: rgb(255, 136, 0);
+    cursor: pointer;
+}

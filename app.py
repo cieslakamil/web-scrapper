@@ -46,8 +46,8 @@ def get_opinions():
             return redirect('/product/'+product_code)
         else:
             feedback = 'Nieprawidłowy kod produktu.'
-            return render_template('/extraction.html', feedback=feedback)
-    return render_template('/extraction.html')
+            return render_template('extraction.html', feedback=feedback)
+    return render_template('extraction.html')
 
 
 @app.route('/product/<product_code>')
@@ -56,12 +56,12 @@ def display_product(product_code):
     if not product:
         product = Product(product_code)
         products.insert_one(product.get_properties())
-    return render_template('/product.html', product=product)
+    return render_template('product.html', product=product)
 
 
 @app.route('/product/<product_code>/download-opinions/<file_extension>')
 def download_opinions(product_code, file_extension):
-    file_name = f'{product_code}.{file_extension}'
+    file_name = f'{product_code}-opinie.{file_extension}'
     file_path = f'./opinions/{product_code}'
     opinions = products.find_one({'code': product_code})['opinions']
     dict_list = opinions
@@ -75,7 +75,7 @@ def download_opinions(product_code, file_extension):
 
 @app.route('/product/<product_code>/statistics')
 def display_statistics_page(product_code):
-    return render_template('/statistics.html', product_code=product_code)
+    return render_template('statistics.html', product_code=product_code)
 
 
 @app.route('/product/<product_code>/get-statistics')
@@ -84,9 +84,12 @@ def get_score_stats(product_code):
     return jsonify([product['score_stats'], product['recommendations']])
 
 @app.route('/product-list')
-def display_products_list():
-    return render_template('/product_list.html', products=products.find())
+def display_product_list_page():
+    return render_template('product_list.html', products=products.find())
 
+@app.route('/author')
+def display_author_page():
+    return render_template('author.html')
 
 """
 
