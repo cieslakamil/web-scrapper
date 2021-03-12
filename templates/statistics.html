@@ -2,7 +2,22 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/statistics.css') }}">
 <script type=text/javascript src="{{url_for('static', filename='js/chart.js') }}"></script>
 <meta id="product_code" data="{{ product_code }}"> {% endblock %} {% block body %}
+<a href="/product/{{ product_code }}">
+    <button class="btn back-button"><h1><b><</b></h1></button>
+</a>
 <div class="container">
+    <div class="row stats-titles">
+        <div class="col">
+            <h5>
+                Liczba opinii z poszczególnymi liczbami gwiazdek
+            </h5>
+        </div>
+        <div class="col">
+            <h5>
+                Udział poszczególnych rekomendacji w ogólnej liczbie opinii
+            </h5>
+        </div>
+    </div>
     <div class="row h-100">
         <div class="col score-chart-container chart-container">
             <canvas id="score-chart"></canvas>

@@ -21,8 +21,6 @@ db = client.ceneo_products_db
 products = db.products
 
 
-print(f'DATABASE: {products}')
-
 @app.route('/')
 def index():
     return render_template('index.html')
