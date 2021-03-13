@@ -65,19 +65,6 @@ class Product:
             pages.append(Product.scrap_page(page_link))
         return pages
 
-    def get_properties(self):
-        return {
-            "code": self.code,
-            "name": self.name,
-            "opinions": self.opinions,
-            "opinions_count": self.opinions_count,
-            "positives_count": self.positives_count,
-            "negatives_count": self.negatives_count,
-            "average_score": self.average_score,
-            "score_stats": self.score_stats,
-            "recommendations": self.recommendations
-        }
-
     @staticmethod
     def get_all_opinions(pages):
         opinions = []

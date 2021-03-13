@@ -6,7 +6,11 @@ from pymongo import MongoClient
 from product import Product
 from data_conversion import dict_list_to_file
 import tempfile
-
+import os
+import random
+import string
+import threading
+import time
 
 app = Flask(__name__)
 app.config.update(
@@ -20,7 +24,9 @@ client = pymongo.MongoClient(
 # client = MongoClient('mongodb://localhost:27017/')
 db = client.ceneo_products_db
 products = db.products
-products.remove()
+
+opinions_file_deletion_delay = 4
+
 
 @app.route('/')
 def index():
@@ -58,15 +64,27 @@ def display_product(product_code):
 
 @ app.route('/product/<product_code>/download-opinions/<file_extension>')
 def download_opinions(product_code, file_extension):
+
     file_name = f'{product_code}-opinie.{file_extension}'
     file_path = f'./opinions/{product_code}'
-    opinions = products.find_one({'code': product_code})['opinions']
-    with tempfile.NamedTemporaryFile('w', encoding='utf-8', delete=False) as file:
+    opinions = Product.dict(product_code)['opinions']
+    temp_file_name = ''.join(random.choices(
+        string.ascii_letters + string.digits, k=16))
+    with open(temp_file_name, 'w', encoding='utf-8') as file:
         dict_list_to_file(opinions, file, file_extension)
+
+    with open(temp_file_name, 'rb') as file:
         try:
+            threading.Thread(target=delete_file_after, args=[
+                             temp_file_name, opinions_file_deletion_delay]).start()
             return send_file(file.name, as_attachment=True, attachment_filename=file_name)
         except Exception as e:
             return str(e)
+
+
+def delete_file_after(file_name, seconds):
+    time.sleep(seconds)
+    os.remove(file_name)
 
 
 @ app.route('/product/<product_code>/statistics')
