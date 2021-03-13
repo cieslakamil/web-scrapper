@@ -15,11 +15,12 @@ app.config.update(
 )
 # MONGODB DATABASE
 
-client = pymongo.MongoClient("mongodb+srv://h6G9Ulz7bix5DdSC:h6G9Ulz7bix5DdSC@ceneop.zyvr9.mongodb.net/ceneop?retryWrites=true&w=majority")
-#client = MongoClient('mongodb://localhost:27017/')
+client = pymongo.MongoClient(
+    "mongodb+srv://h6G9Ulz7bix5DdSC:h6G9Ulz7bix5DdSC@ceneop.zyvr9.mongodb.net/ceneop?retryWrites=true&w=majority")
+# client = MongoClient('mongodb://localhost:27017/')
 db = client.ceneo_products_db
 products = db.products
-
+products.remove()
 
 @app.route('/')
 def index():
@@ -36,28 +37,30 @@ def get_opinions():
     if request.method == "POST":
         product_code = request.form['product_code']
         if product_code and product_code.isdecimal():
-            return redirect('/product/'+product_code)
+            if products.find_one({"code": product_code}):
+                return redirect('/product/'+product_code)
+            elif Product.has_opinions(product_code):
+                products.insert_one(Product.dict(product_code))
+                return redirect('/product/'+product_code)
+            else:
+                feedback = 'Produkt nie posiada opinii'
         else:
             feedback = 'Nieprawidłowy kod produktu.'
-            return render_template('extraction.html', feedback=feedback)
+        return render_template('extraction.html', feedback=feedback)
     return render_template('extraction.html')
 
 
-@app.route('/product/<product_code>')
+@ app.route('/product/<product_code>')
 def display_product(product_code):
     product = products.find_one({"code": product_code})
-    if not product:
-        product = Product(product_code)
-        products.insert_one(product.get_properties())
     return render_template('product.html', product=product)
 
 
-@app.route('/product/<product_code>/download-opinions/<file_extension>')
+@ app.route('/product/<product_code>/download-opinions/<file_extension>')
 def download_opinions(product_code, file_extension):
     file_name = f'{product_code}-opinie.{file_extension}'
     file_path = f'./opinions/{product_code}'
     opinions = products.find_one({'code': product_code})['opinions']
-    dict_list = opinions
     with tempfile.NamedTemporaryFile('w', encoding='utf-8', delete=False) as file:
         dict_list_to_file(opinions, file, file_extension)
         try:
@@ -66,23 +69,26 @@ def download_opinions(product_code, file_extension):
             return str(e)
 
 
-@app.route('/product/<product_code>/statistics')
+@ app.route('/product/<product_code>/statistics')
 def display_statistics_page(product_code):
     return render_template('statistics.html', product_code=product_code)
 
 
-@app.route('/product/<product_code>/get-statistics')
+@ app.route('/product/<product_code>/get-statistics')
 def get_score_stats(product_code):
     product = products.find_one({"code": product_code})
     return jsonify([product['score_stats'], product['recommendations']])
 
-@app.route('/product-list')
+
+@ app.route('/product-list')
 def display_product_list_page():
     return render_template('product_list.html', products=products.find())
 
-@app.route('/author')
+
+@ app.route('/author')
 def display_author_page():
     return render_template('author.html')
+
 
 """
 

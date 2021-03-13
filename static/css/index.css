@@ -34,6 +34,7 @@
     top: 5em;
     right: 5em;
     z-index: 2;
+    text-align: justify;
 }
 
 .app-description .widget-title {
