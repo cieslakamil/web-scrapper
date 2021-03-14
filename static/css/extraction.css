@@ -2,13 +2,17 @@
     width: 40vw;
     height: 40vh;
     margin-top: 15vh;
+    display: flex;
+    justify-content: space-around;
 }
 
 input.form-control#product-code {
     width: 200px;
 }
 
-.submit-row {
+.input-group {}
+
+.submit-col {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -22,5 +26,7 @@ input.form-control#product-code {
 
 .title {
     text-align: center;
+    margin-bottom: 1em;
+    background-color: var(--metalic);
     margin-bottom: 1em;
 }

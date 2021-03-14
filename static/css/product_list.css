@@ -1,5 +1,6 @@
 .title {
     font-size: 2.5em;
+    background-color: var(--metalic);
 }
 
 .container {

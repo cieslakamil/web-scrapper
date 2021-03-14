@@ -66,6 +66,7 @@
 .approaches {
     position: relative;
     top: 0.5em;
+    left: 1em;
     z-index: 4;
 }
 

@@ -7,7 +7,10 @@
 
 .opinions-stats {
     margin: auto;
-    padding: 1em;
+    padding: 0.25em;
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+    background-color: var(--metalic);
 }
 
 .opinions-stats h5 {
@@ -35,8 +38,28 @@ tbody {
 }
 
 th {
-    background-color: rgb(125, 135, 153);
-    color: white;
+    background-color: rgba(243, 232, 217, 0.644);
+}
+
+thead input {
+    color: black;
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: black;
+    opacity: 1;
+    /* Firefox */
+}
+
+ :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: red;
+}
+
+ ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: red;
 }
 
 td,
@@ -53,6 +76,8 @@ td {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: "-";
+    text-align: center;
+    font-weight: bold;
 }
 
 table.dataTable td:nth-child(10) {

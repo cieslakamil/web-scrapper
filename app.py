@@ -18,15 +18,13 @@ app.config.update(
     debug=True
 )
 # MONGODB DATABASE
-
 client = pymongo.MongoClient(
     "mongodb+srv://h6G9Ulz7bix5DdSC:h6G9Ulz7bix5DdSC@ceneop.zyvr9.mongodb.net/ceneop?retryWrites=true&w=majority")
 # client = MongoClient('mongodb://localhost:27017/')
 db = client.ceneo_products_db
-products = db.products
+product_list = db.products
 
-opinions_file_deletion_delay = 4
-
+opinions_file_deletion_delay = 7
 
 @app.route('/')
 def index():
@@ -43,10 +41,10 @@ def get_opinions():
     if request.method == "POST":
         product_code = request.form['product_code']
         if product_code and product_code.isdecimal():
-            if products.find_one({"code": product_code}):
+            if product_list.find_one({"code": product_code}):
                 return redirect('/product/'+product_code)
             elif Product.has_opinions(product_code):
-                products.insert_one(Product.dict(product_code))
+                product_list.insert_one(Product.dict(product_code))
                 return redirect('/product/'+product_code)
             else:
                 feedback = 'Produkt nie posiada opinii'
@@ -58,7 +56,7 @@ def get_opinions():
 
 @ app.route('/product/<product_code>')
 def display_product(product_code):
-    product = products.find_one({"code": product_code})
+    product = product_list.find_one({"code": product_code})
     return render_template('product.html', product=product)
 
 
@@ -94,13 +92,13 @@ def display_statistics_page(product_code):
 
 @ app.route('/product/<product_code>/get-statistics')
 def get_score_stats(product_code):
-    product = products.find_one({"code": product_code})
+    product = product_list.find_one({"code": product_code})
     return jsonify([product['score_stats'], product['recommendations']])
 
 
 @ app.route('/product-list')
 def display_product_list_page():
-    return render_template('product_list.html', products=products.find())
+    return render_template('product_list.html', product_list=product_list.find())
 
 
 @ app.route('/author')

@@ -2,13 +2,13 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/extraction.css') }}"> {% endblock %} {% block body %}
 <div class="container">
     <div class="row">
-        <div class="row">
-            <div class="col title">
-                <h1>Wprowadź kod produktu</h1>
-            </div>
+        <div class="col title">
+            <h1>Wprowadź kod produktu</h1>
         </div>
-        <div class="input-group">
-            <div class="row mt-1">
+    </div>
+    <div class="row mt-1">
+        <div class="col">
+            <div class="input-col input-group">
                 <form action="/get-opinions" method="POST" id="extraction_form" class="row justify-content-center">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -21,19 +21,20 @@
                 </form>
             </div>
         </div>
-        <div class="col mt-3 submit-row">
-            <div class="col-3">
-                <button type="submit" class="btn btn-primary" form="extraction_form" value="Submit">Sprawdź opinie</button>
-            </div>
-            {% if feedback %}
-            <div class="col">
-                <div class="warning">
-                    <b>{{ feedback }}</b>
-                </div>
-            </div>
-            {% endif %}
-        </div>
     </div>
+    <div class="row">
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary" form="extraction_form" value="Submit">Sprawdź opinie</button>
+        </div>
+        {% if feedback %}
+        <div class="col">
+            <div class="warning">
+                <b>{{ feedback }}</b>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
 </div>
 
 {% endblock %}
