@@ -5,7 +5,8 @@
 
 :root {
     --darker-orange: #e78718;
-    --lighter-orange: #f1aa58;
+    --lighter-orange: #f89e37;
+    --metalic: rgb(91, 100, 114);
 }
 
 .container {

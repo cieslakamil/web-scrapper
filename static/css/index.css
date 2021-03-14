@@ -2,6 +2,8 @@
     min-height: 85vh;
     padding: 1em;
     margin-bottom: 0;
+    background-color: #ffffff00;
+    box-shadow: none;
 }
 
 .container:nth-child(1) {}
@@ -21,10 +23,10 @@
 
 .widget {
     width: 100px;
-    background-color: white;
+    background-color: var(--lighter-orange);
+    color: white;
     height: 37vh;
     padding: 1.5em;
-    color: black;
     display: flex;
     flex-direction: column;
     margin: 1em;
@@ -32,7 +34,8 @@
 }
 
 .widget-title {
-    text-align: center;
+    background-color: var(--metalic);
+    padding: 0.1em;
 }
 
 .widget span {
@@ -43,13 +46,15 @@
 
 .app-purpose {
     position: relative;
+    bottom: 1em;
+    right: 2em;
     z-index: 2;
 }
 
 .app-description {
     position: relative;
-    top: 2em;
-    right: 4em;
+    top: 3.3em;
+    right: 5.5em;
     z-index: 5;
     text-align: justify;
 }
@@ -60,6 +65,7 @@
 
 .approaches {
     position: relative;
+    top: 0.5em;
     z-index: 4;
 }
 
@@ -75,10 +81,10 @@
 .used-libraries {
     position: relative;
     left: 4em;
-    bottom: 2em;
+    bottom: 3em;
     z-index: 1;
 }
 
 .used-libraries .col-3 {
-    color: blue;
+    font-weight: bold;
 }
