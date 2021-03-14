@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 class Product:
     base_url = 'https://www.ceneo.pl'
     opinions_per_page = 10
+    pages_count_limit = 50
 
     def __init__(self):
         pass
@@ -57,9 +58,11 @@ class Product:
         if reviews_button:
             pages_count_str = reviews_button.find('span').text
             pages_count = math.ceil(int(pages_count_str[pages_count_str.find(
-                '(')+1:pages_count_str.find(')')]) / Product.opinions_per_page)
+                    '(')+1:pages_count_str.find(')')]) / Product.opinions_per_page)
         else:
             pages_count = 1
+
+        pages_count = Product.pages_count_limit if pages_count > Product.pages_count_limit else pages_count
         for i in range(2, pages_count+1):
             page_link = f'{Product.base_url}/{product_code}/opinie-{i}'
             pages.append(Product.scrap_page(page_link))
@@ -131,7 +134,7 @@ class Product:
             return features
         else:
             return ''
-    
+
     @staticmethod
     def get_score_stats(opinions):
         score_stats = [0, 0, 0, 0, 0]
@@ -159,4 +162,4 @@ class Product:
                 recommendations[1] += 1
             else:
                 recommendations[0] += 1
-        return recommendations  
+        return recommendations

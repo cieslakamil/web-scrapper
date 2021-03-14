@@ -23,7 +23,6 @@ client = pymongo.MongoClient(
 # client = MongoClient('mongodb://localhost:27017/')
 db = client.ceneo_products_db
 product_list = db.products
-
 opinions_file_deletion_delay = 7
 
 @app.route('/')
