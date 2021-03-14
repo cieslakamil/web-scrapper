@@ -1,18 +1,34 @@
 .container {
-    min-height: 140vh;
+    min-height: 85vh;
+    padding: 1em;
+    margin-bottom: 0;
+}
+
+.container:nth-child(1) {}
+
+.home-page-title {
+    text-align: center;
+    border: 2px solid red;
+}
+
+.home-page-title span {
+    font-size: 2em;
+}
+
+.container .col {
+    border: 2px greenyellow;
 }
 
 .widget {
     width: 100px;
     background-color: white;
-    height: 300px;
+    height: 37vh;
     padding: 1.5em;
     color: black;
     display: flex;
     flex-direction: column;
     margin: 1em;
-    border-radius: 15px;
-    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.027), 0 6.7px 5.3px rgba(0, 0, 0, 0.027), 0 12.5px 10px rgba(0, 0, 0, 0.021), 0 22.3px 17.9px rgba(0, 0, 0, 0.027), 0 41.8px 33.4px rgba(0, 0, 0, 0.027), 0 100px 80px rgba(0, 0, 0, 0.048);
 }
 
 .widget-title {
@@ -26,14 +42,15 @@
 }
 
 .app-purpose {
-    z-index: 1;
+    position: relative;
+    z-index: 2;
 }
 
 .app-description {
     position: relative;
-    top: 5em;
-    right: 5em;
-    z-index: 2;
+    top: 2em;
+    right: 4em;
+    z-index: 5;
     text-align: justify;
 }
 
@@ -43,6 +60,7 @@
 
 .approaches {
     position: relative;
+    z-index: 4;
 }
 
 .approaches .widget-title {
@@ -57,13 +75,8 @@
 .used-libraries {
     position: relative;
     left: 4em;
-    top: 4em;
-    z-index: 2;
-}
-
-.container .row:nth-child(1) {
-    margin-top: 3em;
-    margin-bottom: 6em;
+    bottom: 2em;
+    z-index: 1;
 }
 
 .used-libraries .col-3 {
